@@ -14,7 +14,15 @@ public class TQBR_Client{
         br = new BufferedReader(new InputStreamReader(s.getInputStream()));
         ps = new PrintStream(s.getOutputStream());
 
-        
+
+        if(s.isConnected()){
+            System.out.println("what would you like your opponents to try and guess? (person, place, thing, etc)");
+            String item = scan.nextLine();
+            ps.println(item);
+            ps.flush();
+        }
+
+
 
 
 
