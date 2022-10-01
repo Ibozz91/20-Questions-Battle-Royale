@@ -14,7 +14,7 @@ public class TQBR_Host{
     public static void main(String Args[]) throws IOException, UnknownHostException{
         Scanner Scan = new Scanner(System.in);
         ServerSocket ss = new ServerSocket(20200);
-        System.out.println("Twenty Questions Battle Royale");
-
+        System.out.println("Twenty Questions Battle Royale (Host Side)\nHave players join at "+InetAddress.getLocalHost().getHostAddress()+" on the Client Side version.\nIf you want to join too, open a Client Side version in a new window and enter \"localhost\".");
+        
     }
 }
