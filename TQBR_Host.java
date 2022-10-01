@@ -13,8 +13,15 @@ import java.util.Scanner;
 public class TQBR_Host{
     public static void main(String Args[]) throws IOException, UnknownHostException{
         Scanner Scan = new Scanner(System.in);
-        ServerSocket ss = new ServerSocket(20200);
-        System.out.println("Twenty Questions Battle Royale (Host Side)\nHave players join at "+InetAddress.getLocalHost().getHostAddress()+" on the Client Side version.\nIf you want to join too, open a Client Side version in a new window and enter \"localhost\".");
-        
+        System.out.println("Please enter the amount of people playing exactly.");
+        ServerSocket[] ServeSocks = new ServerSocket[Scan.nextInt()];
+        for(int i = 0; i < ServeSocks.length; i++){
+            ServeSocks[i] = new ServerSocket(20200);
+        }
+        System.out.println("Have players join at "+InetAddress.getLocalHost().getHostAddress()+" on the Client Side version.\nIf you want to join too, open a Client Side version in a new window and enter \"localhost\".");
+        Socket[] Socks = new Socket[ServeSocks.length];
+        for(int i = 0; i < Socks.length; i++){
+            Socks[i]=ServeSocks[i].accept();
+        }
     }
 }
