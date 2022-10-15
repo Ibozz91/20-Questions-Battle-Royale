@@ -22,12 +22,15 @@ public class TQBR_Host{
             players[i] = new Player(ss.accept());
         }
         System.out.println("Everyone has joined.");
-        for(int i = 0; i < players.length; i++){
-            players[i].send("a");
+        for(Player i: players){
+            i.send("a");
         }
-        for(int i = 0; i < players.length; i++){
-            players[i].assignusername(players[i].read());
+        for(Player i: players){
+            i.assignusername(i.read());
         }
-        
+        System.out.println("Current players:");
+        for(Player i: players){
+            System.out.println(i.usrn());
+        }
     }
 }
