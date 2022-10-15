@@ -13,5 +13,13 @@ public class TQBR_Client{
         System.out.println("There are "+playercount+" players. Select a username for yourself.");
         ps.println(Scan.nextLine());
         ps.flush();
+        String[] playernames = new String[playercount];
+        for(int i = 0; i < playercount; i++){
+            playernames[i]=br.readLine();
+        }
+        System.out.println("All player usernames:");
+        for(String i: playernames){
+            System.out.println(i);
+        }
     }
 }

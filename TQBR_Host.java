@@ -16,7 +16,7 @@ public class TQBR_Host{
         ServerSocket ss = new ServerSocket(20200);
         System.out.println("20 Questions Battle Royale\nPlease enter the amount of people playing exactly.");
         Player[] players = new Player[Scan.nextInt()];
-        System.out.println("Have players join at "+InetAddress.getLocalHost().getHostAddress()+" on the Client Side version.\nIf you want to join too, open a Client Side version in a new window and enter \"localhost\".");
+        System.out.println("Have players join at "+InetAddress.getLocalHost().getHostAddress()+" on the Client Side version.\nIf you want to join too, open a Client Side version in a new window and enter \"localhost\".\nMake sure everybody is on the same wifi.");
         for(int i = 0; i < players.length; i++){
             System.out.println(i+" player(s) have joined.");
             players[i] = new Player(ss.accept());
