@@ -23,7 +23,13 @@ public class TQBR_Client{
         }
         System.out.println("what would you like your players to guess?");
         String thing = Scan.nextLine();
-        ps.flush(thing);
+        ps.println(thing);
+        ps.flush();
+        for(int x=0; x<playercount; x++){
+            System.out.println("Ask a yes or no question for player "+x+".");
+            ps.println(Scan.nextLine());
+            ps.flush();
+        }
         
     }
 }
