@@ -33,6 +33,7 @@ public class TQBR_Client{
                 
             }
         }
+        /*
         for(int x = 0; x<playercount; x++){
             br.readLine();
             System.out.println("""
@@ -44,6 +45,6 @@ public class TQBR_Client{
             ps.println(Scan.nextLine());
             ps.flush();
         }
-
+        */
     }
 }
