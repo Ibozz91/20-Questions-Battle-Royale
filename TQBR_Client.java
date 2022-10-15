@@ -25,5 +25,10 @@ public class TQBR_Client{
         String thing = Scan.nextLine();
         ps.println(thing);
         ps.flush();
+        for(int x=0; x<playercount; x++){
+            System.out.println("Ask a yes or no question for player "+x+".");
+            ps.println(Scan.nextLine());
+            ps.flush();
+        }
     }
 }
