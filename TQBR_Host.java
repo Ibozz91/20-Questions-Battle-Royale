@@ -37,5 +37,13 @@ public class TQBR_Host{
                 i.send(ii.usrn());
             }
         }
+        System.out.println("Accepting responses for things from the players.");
+        for(Player i: players){
+            i.assthing(i.read());
+        }
+        System.out.println("This is just a test. If you downloaded the newest commit and are seeing this, please go to Ibozz91 himself and tell him that he is a bad programmer for leaking the results and ruining the greatest battle royale game of all time.");
+        for(Player i: players){
+            System.out.println(i.readthing());
+        }
     }
 }

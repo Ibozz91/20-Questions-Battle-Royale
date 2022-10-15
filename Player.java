@@ -24,4 +24,10 @@ public class Player{
     public String read() throws IOException{
         return br.readLine();
     }
+    public void assthing(String whattheysaid){
+        thing=whattheysaid;
+    }
+    public String readthing(){
+        return thing;
+    }
 }
