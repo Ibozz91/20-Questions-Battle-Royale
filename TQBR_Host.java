@@ -23,7 +23,7 @@ public class TQBR_Host{
         }
         System.out.println("Everyone has joined.");
         for(Player i: players){
-            i.send("a");
+            i.send(Integer.toString(players.length));
         }
         for(Player i: players){
             i.assignusername(i.read());
@@ -31,6 +31,11 @@ public class TQBR_Host{
         System.out.println("Current players:");
         for(Player i: players){
             System.out.println(i.usrn());
+        }
+        for(Player i: players){
+            for(Player ii: players){
+                i.send(ii.usrn());
+            }
         }
     }
 }
