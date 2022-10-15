@@ -21,5 +21,9 @@ public class TQBR_Client{
         for(String i: playernames){
             System.out.println(i);
         }
+        System.out.println("what would you like your players to guess?");
+        String thing = Scan.nextLine();
+        ps.flush(thing);
+        
     }
 }
