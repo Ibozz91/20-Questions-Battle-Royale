@@ -41,6 +41,9 @@ public class TQBR_Host{
         for(Player i: players){
             i.assthing(i.read());
         }
+        for(int i = 0; i < players.length; i++){
+            players[i].send(Integer.toString(i));
+        }
         System.out.println("This is just a test. If you downloaded the newest commit and are seeing this, please go to Ibozz91 himself and tell him that he is a bad programmer for leaking the results and ruining the greatest battle royale game of all time.");
         for(Player i: players){
             System.out.println(i.readthing());
