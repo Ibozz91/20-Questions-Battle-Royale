@@ -23,4 +23,5 @@ public class Player{
     }
     public String read() throws IOException{
         return br.readLine();
+    }
 }
