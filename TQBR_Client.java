@@ -13,5 +13,8 @@ public class TQBR_Client{
         System.out.println("There are "+playercount+" players. Select a username for yourself.");
         ps.println(Scan.nextLine());
         ps.flush();
+        System.out.println("what would you like your players to guess?");
+        String thing = Scan.nextLine();
+        ps.flush(thing);
     }
 }
