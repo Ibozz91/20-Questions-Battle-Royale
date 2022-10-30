@@ -30,7 +30,15 @@ public class TQBR_Client{
         boolean gamestillgoingon=true;
         while(gamestillgoingon){
             for(int i = 0; i < playercount; i++){
-                
+                br.readLine();
+                System.out.println("""
+                1. Yes
+                2. No
+                3. Sometimes
+                4. Correct (the player guessed the thing exactly)
+                """);
+                ps.println(Scan.nextLine());
+                ps.flush();
             }
         }
         /*
