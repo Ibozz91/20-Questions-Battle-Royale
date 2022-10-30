@@ -50,12 +50,40 @@ public class TQBR_Host{
         }
         int playersin=players.length;
         while(playersin>1){
-            //Get questions from every player and send them to ever other player
+            String[][] Questions = new String[players.length][players.length];
+            String[][] Answers = new String[players.length][players.length];
+            //Get questions from every player and send them to every other player
+            for(int i = 0; i < players.length; i++){
+                if(players[i].isAlive()){
+                    for(int ii = 0; ii < players.length; ii++){
+                        if(players[ii].isAlive() && i!=ii){
+                            String q = players[i].read();
+                            players[ii].send(q);
+                            Questions[ii][i]=q;
+                        }
+                    }
+                }
+            }
+            //Get the answers to the questions
+            for(int i = 0; i < players.length; i++){
+                if(players[i].isAlive()){
+                    for(int ii = 0; ii < players.length; ii++){
+                        if(players[ii].isAlive() && i!=ii){
+                            String a = players[i].read();
+                            players[ii].send(a);
+                            Answers[i][ii]=a;
+                        }
+                    }
+                }
+            }
+            //Send Q&A to everybody
             for(int i = 0; i < players.length; i++){
                 if(players[i].isAlive()){
                     for(int ii = 0; ii < players.length; ii++){
                         if(players[ii].isAlive()){
-                            players[ii].send(players[i].read());
+                            for(int iii = 0; iii < players.length; iii++){
+                                
+                            }
                         }
                     }
                 }
