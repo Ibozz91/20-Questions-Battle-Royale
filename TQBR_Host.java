@@ -48,5 +48,18 @@ public class TQBR_Host{
         for(Player i: players){
             System.out.println(i.readthing());
         }
+        int playersin=players.length;
+        while(playersin>1){
+            //Get questions from every player
+            for(int i = 0; i < players.length; i++){
+                
+            }
+            playersin=0;
+            for(int i = 0; i < players.length; i++){
+                if(players[i].isAlive()){
+                    playersin++;
+                }
+            }
+        }
     }
 }
