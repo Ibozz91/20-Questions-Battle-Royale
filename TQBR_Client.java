@@ -35,15 +35,22 @@ public class TQBR_Client{
                 ps.flush();
             }
             for(int i = 0; i < playercount; i++){
-                br.readLine();
+                System.out.println(br.readLine());
                 System.out.println("""
                 1. Yes
                 2. No
                 3. Sometimes
                 4. Correct (the player guessed the thing exactly)
                 """);
-                ps.println(Scan.nextLine());
+                String response0 = Scan.nextLine();
+                if response0.equals("correct"){
+                    System.out.println("you have been eliminated");
+                }
+                ps.println();
                 ps.flush();
+                String response1 = br.readLine();
+                System.out.println(response1);
+                
             }
         }
         /*
