@@ -82,7 +82,22 @@ public class TQBR_Host{
                     for(int ii = 0; ii < players.length; ii++){
                         if(players[ii].isAlive()){
                             for(int iii = 0; iii < players.length; iii++){
-                                
+                                if(players[iii].isAlive() && ii!=iii){
+                                    players[ii].send(Questions[ii][iii]);
+                                    players[ii].send(Answers[ii][iii]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //Eliminate players if necessary
+            for(int i = 0; i < players.length; i++){
+                if(players[i].isAlive()){
+                    for(int ii = 0; ii < players.length; ii++){
+                        if(players[ii].isAlive() && i!=ii){
+                            if(Answers[i][ii].equals("Correct")){
+                                players[i].eliminate();
                             }
                         }
                     }
@@ -93,6 +108,11 @@ public class TQBR_Host{
                 if(players[i].isAlive()){
                     playersin++;
                 }
+            }
+        }
+        for(int i = 0; i < players.length; i++){
+            for(int ii = 0; ii < players.length; ii++){
+                players[i].send(players[ii].readthing());
             }
         }
     }
