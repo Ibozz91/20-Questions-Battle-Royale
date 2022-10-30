@@ -11,8 +11,7 @@ public class TQBR_Client{
         PrintStream ps = new PrintStream(s.getOutputStream());
         int playercount=Integer.parseInt(br.readLine());
         System.out.println("There are "+playercount+" players. Select a username for yourself.");
-        ps.println(Scan.nextLine());
-        ps.flush();
+        ps.send(Scan.nextLine());
         String[] playernames = new String[playercount];
         for(int i = 0; i < playercount; i++){
             playernames[i]=br.readLine();
@@ -23,27 +22,24 @@ public class TQBR_Client{
         }
         System.out.println("Choose something for other players to guess. Remember to keep it secret and not have anybody peek.");
         String thing = Scan.nextLine();
-        ps.println(thing);
-        ps.flush();
+        ps.send(thing);
         int pnumber = Integer.parseInt(br.readLine());
         boolean stillin=true;
         boolean gamestillgoingon=true;
         while(gamestillgoingon){
             for(int i = 0; i < playercount; i++){
                 System.out.println("ask a question for player "+i);
-                ps.println(Scan.nextLine());
-                ps.flush();
+                ps.send(Scan.nextLine());
             }
             for(int i = 0; i < playercount; i++){
-                br.readLine();
+                read();
                 System.out.println("""
                 1. Yes
                 2. No
                 3. Sometimes
                 4. Correct (the player guessed the thing exactly)
                 """);
-                ps.println(Scan.nextLine());
-                ps.flush();
+                ps.send(Scan.nextLine());
             }
         }
         /*
