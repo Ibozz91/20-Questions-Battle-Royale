@@ -30,6 +30,11 @@ public class TQBR_Client{
         boolean gamestillgoingon=true;
         while(gamestillgoingon){
             for(int i = 0; i < playercount; i++){
+                System.out.println("ask a question for player "+i);
+                ps.println(Scan.nextLine());
+                ps.flush();
+            }
+            for(int i = 0; i < playercount; i++){
                 br.readLine();
                 System.out.println("""
                 1. Yes
