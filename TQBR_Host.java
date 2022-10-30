@@ -50,9 +50,15 @@ public class TQBR_Host{
         }
         int playersin=players.length;
         while(playersin>1){
-            //Get questions from every player
+            //Get questions from every player and send them to ever other player
             for(int i = 0; i < players.length; i++){
-                
+                if(players[i].isAlive()){
+                    for(int ii = 0; ii < players.length; ii++){
+                        if(players[ii].isAlive()){
+                            players[ii].send(players[i].read());
+                        }
+                    }
+                }
             }
             playersin=0;
             for(int i = 0; i < players.length; i++){
