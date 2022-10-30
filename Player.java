@@ -6,10 +6,12 @@ public class Player{
     private String thing;
     private BufferedReader br;
     private PrintStream ps;
+    private boolean stillalive;
     public Player(Socket socketaccepted) throws IOException{
         sock = socketaccepted;
         br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
         ps = new PrintStream(sock.getOutputStream());
+        stillalive = true;
     }
     public void assignusername(String usn){
         username = usn;
@@ -25,9 +27,15 @@ public class Player{
         return br.readLine();
     }
     public void assthing(String whattheysaid){
-        thing=whattheysaid;
+        thing = whattheysaid;
     }
     public String readthing(){
         return thing;
+    }
+    public void eliminate(){
+        stillalive = false;
+    }
+    public boolean isAlive(){
+        return stillalive;
     }
 }
