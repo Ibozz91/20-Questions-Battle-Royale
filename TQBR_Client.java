@@ -43,7 +43,7 @@ public class TQBR_Client{
                 4. Correct (the player guessed the thing exactly)
                 """);
                 String response0 = Scan.nextLine();
-                if response0.equals("correct"){
+                if(response0.equals("Correct")){
                     System.out.println("you have been eliminated.");
                     stillin = false;
                     gamestillgoingon = false;
@@ -52,9 +52,7 @@ public class TQBR_Client{
                 ps.flush();
                 String response1 = br.readLine();
                 System.out.println(response1);
-                
             }
         }
-        
     }
 }
