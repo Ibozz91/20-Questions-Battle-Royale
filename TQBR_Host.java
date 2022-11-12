@@ -7,6 +7,8 @@
    Screenpeeking, and teams are not allowed.
    Last player remaining wins.
 */
+import java.util.ArrayList;
+import java.util.Random;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -113,6 +115,31 @@ public class TQBR_Host{
         for(int i = 0; i < players.length; i++){
             for(int ii = 0; ii < players.length; ii++){
                 players[i].send(players[ii].readthing());
+            }
+        }
+        if(playersin==1){
+            int winner = -1;
+            for(int i = 0; i < players.length; i++){
+                if(players[i].isAlive()){
+                    winner = i;
+                }
+            }
+            for(int i = 0; i < players.length; i++){
+                players[i].send(Integer.toString(winner));
+            }
+        }
+        else{
+            ArrayList<Integer> winners = new ArrayList<Integer>();
+            for(int i = 0; i < players.length; i++){
+                if(players[i].isAlive()){
+                    winners.add(i);
+                }
+            }
+            Random tiebreaker = new Random();
+            int winnerindex = tiebreaker.nextInt(winners.size());
+            int winner = winners.get(winnerindex);
+            for(int i = 0; i < players.length; i++){
+                players[i].send(Integer.toString(winner));
             }
         }
     }
