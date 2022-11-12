@@ -26,7 +26,7 @@ public class TQBR_Client{
         ps.println(thing);
         ps.flush();
         int pnumber = Integer.parseInt(br.readLine());
-        boolean stillin=true;
+        boolean stillin = true;
         boolean gamestillgoingon=true;
         while(gamestillgoingon){
             for(int i = 0; i < playercount; i++){
@@ -48,7 +48,7 @@ public class TQBR_Client{
                     stillin = false;
                     gamestillgoingon = false;
                 }
-                ps.println(response0);
+                ps.println(Integer.toString(response0));
                 ps.flush();
                 String response1 = br.readLine();
                 System.out.println(response1);
