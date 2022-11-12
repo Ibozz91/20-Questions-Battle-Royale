@@ -44,7 +44,7 @@ public class TQBR_Client{
                 String response0 = Scan.nextLine();
                 if(response0.equals("Correct")){
                     System.out.println("you have been eliminated.");
-                    //Eliminated if you answer correct for someone else's question???? Fix
+                    //NVM this is good
                     stillin = false;
                 }
                 ps.println();
