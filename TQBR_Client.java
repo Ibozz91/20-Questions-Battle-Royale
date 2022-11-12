@@ -42,13 +42,13 @@ public class TQBR_Client{
                 3. Sometimes
                 4. Correct (the player guessed the thing exactly)
                 """);
-                String response0 = Scan.nextLine();
-                if(response0.equals("Correct")){
+                int response0 = Scan.nextInt();
+                if(response0==4){
                     System.out.println("you have been eliminated.");
                     stillin = false;
                     gamestillgoingon = false;
                 }
-                ps.println();
+                ps.println(response0);
                 ps.flush();
                 String response1 = br.readLine();
                 System.out.println(response1);
