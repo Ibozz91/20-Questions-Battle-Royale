@@ -44,7 +44,9 @@ public class TQBR_Client{
                 """);
                 String response0 = Scan.nextLine();
                 if response0.equals("correct"){
-                    System.out.println("you have been eliminated");
+                    System.out.println("you have been eliminated.");
+                    stillin = false;
+                    gamestillgoingon = false;
                 }
                 ps.println();
                 ps.flush();
@@ -53,18 +55,6 @@ public class TQBR_Client{
                 
             }
         }
-        /*
-        for(int x = 0; x<playercount; x++){
-            br.readLine();
-            System.out.println("""
-            1. Yes
-            2. No
-            3. Sometimes
-            4. Correct (the player guessed the thing exactly)
-            """);
-            ps.println(Scan.nextLine());
-            ps.flush();
-        }
-        */
+        
     }
 }
