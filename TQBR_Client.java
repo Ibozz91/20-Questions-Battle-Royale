@@ -27,8 +27,7 @@ public class TQBR_Client{
         ps.flush();
         int pnumber = Integer.parseInt(br.readLine());
         boolean stillin = true;
-        boolean gamestillgoingon=true;
-        while(gamestillgoingon){
+        while(stillin){
             for(int i = 0; i < playercount; i++){
                 System.out.println("ask a question for player "+i);
                 ps.println(Scan.nextLine());
@@ -46,7 +45,6 @@ public class TQBR_Client{
                 if(response0==4){
                     System.out.println("you have been eliminated.");
                     stillin = false;
-                    gamestillgoingon = false;
                 }
                 ps.println(Integer.toString(response0));
                 ps.flush();
