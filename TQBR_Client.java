@@ -27,7 +27,8 @@ public class TQBR_Client{
         ps.flush();
         int pnumber = Integer.parseInt(br.readLine());
         boolean stillin=true;
-        while(stillin){
+        boolean gamestillgoingon=true;
+        while(gamestillgoingon){
             for(int i = 0; i < playercount; i++){
                 System.out.println("ask a question for player "+i);
                 ps.println(Scan.nextLine());
@@ -42,16 +43,18 @@ public class TQBR_Client{
                 4. Correct (the player guessed the thing exactly)
                 """);
                 String response0 = Scan.nextLine();
-                if(response0.equals("Correct")){
+                if response0.equals("correct"){
                     System.out.println("you have been eliminated.");
-                    //Eliminated if you answer correct for someone else's question???? Fix
                     stillin = false;
+                    gamestillgoingon = false;
                 }
                 ps.println();
                 ps.flush();
                 String response1 = br.readLine();
                 System.out.println(response1);
+                
             }
         }
+        
     }
 }
