@@ -50,9 +50,9 @@ public class TQBR_Client{
                 ps.flush();
                 String response1 = br.readLine();
                 System.out.println(response1);
-                System.out.println("your question/guess for player "+i+" was "+response1);
+                System.out.println("your question/guess for "+playernames[i]+" was "+response1);
                 if(response1.equalsIgnoreCase("correct")){
-                    System.out.println("you eliminated player "+i);
+                    System.out.println("you eliminated "+playernames[i]);
                 }
                 
             }
