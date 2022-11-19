@@ -25,7 +25,6 @@ public class TQBR_Client{
         String thing = Scan.nextLine();
         ps.println(thing);
         ps.flush();
-        int pnumber = Integer.parseInt(br.readLine());
         boolean stillin = true;
         while(stillin){
             for(int i = 0; i < playercount; i++){
@@ -33,7 +32,7 @@ public class TQBR_Client{
                 ps.println(Scan.nextLine());
                 ps.flush();
             }
-            for(int i = 0; i < playercount; i++){
+            for(int i = 0; i < playercount-1; i++){
                 System.out.println(br.readLine());
                 System.out.println("""
                 1. Yes
@@ -48,14 +47,8 @@ public class TQBR_Client{
                 }
                 ps.println(Integer.toString(response0));
                 ps.flush();
-                String response1 = br.readLine();
-                System.out.println(response1);
-                System.out.println("your question/guess for "+playernames[i]+" was "+response1);
-                if(response1.equalsIgnoreCase("correct")){
-                    System.out.println("you eliminated "+playernames[i]);
-                }
-                
             }
+            
         }
     }
 }
