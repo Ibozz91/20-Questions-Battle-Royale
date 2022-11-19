@@ -26,6 +26,7 @@ public class TQBR_Client{
         ps.println(thing);
         ps.flush();
         boolean stillin = true;
+        boolean spectating = false;
         while(stillin){
             for(int i = 0; i < playercount; i++){
                 System.out.println("ask a question for player "+i);
@@ -44,11 +45,15 @@ public class TQBR_Client{
                 if(response0==4){
                     System.out.println("you have been eliminated.");
                     stillin = false;
+                    spectating = true;
                 }
                 ps.println(Integer.toString(response0));
                 ps.flush();
             }
             
+        }
+        while (spectating = true){
+
         }
     }
 }
