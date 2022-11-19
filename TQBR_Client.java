@@ -50,10 +50,14 @@ public class TQBR_Client{
                 ps.println(Integer.toString(response0));
                 ps.flush();
             }
-            /*
-             Alright Brady
-             Put the last stuff here
-             */
+            for(i = 0; i<Playersin.size(); i++){
+                for j = 0; j<Playersin.size()-1; j++){
+                    String Q = br.readLine();
+                    String A = br.readLine()
+                    System.out.println(Playersin.get(i)+" asked "+Playersin.get(j)+": "+Q". "+Playersin.get(j)+" responded with: "+A+".");
+                }
+            }
+
         }
         System.out.println("Game is still going on...");
         System.out.println(br.readLine()+" won!");
