@@ -25,6 +25,9 @@ public class TQBR_Host{
         }
         System.out.println("Everyone has joined.");
         for(Player i: players){
+            i.send(Integer.toString(players.length));
+        }
+        for(Player i: players){
             i.assignusername(i.read());
         }
         System.out.println("Current players:");
