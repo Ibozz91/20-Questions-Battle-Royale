@@ -9,7 +9,6 @@ public class TQBR_Client{
         Socket s = new Socket(Scan.nextLine(), 20200);
         BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
         PrintStream ps = new PrintStream(s.getOutputStream());
-        int playercount=Integer.parseInt(br.readLine());
         System.out.println("There are "+playercount+" players. Select a username for yourself.");
         ps.println(Scan.nextLine());
         ps.flush();
