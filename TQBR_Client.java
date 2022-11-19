@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class TQBR_Client{
     public static void main(String Args[]) throws IOException, UnknownHostException, UnsupportedOperationException{
+        String[] Answers = {"Yes", "No", "Sometimes", "Correct"};
         Scanner Scan = new Scanner(System.in);
         System.out.println("20 Questions Battle Royale\nPlease enter the IP address of the game you want to join.");
         Socket s = new Socket(Scan.nextLine(), 20200);
@@ -47,17 +48,21 @@ public class TQBR_Client{
                     System.out.println("you have been eliminated.");
                     stillin = false;
                 }
-                ps.println(Integer.toString(response0));
+                ps.println(Answers[response0-1]);
                 ps.flush();
             }
-            for(i = 0; i<Playersin.size(); i++){
-                for j = 0; j<Playersin.size()-1; j++){
-                    String Q = br.readLine();
-                    String A = br.readLine()
-                    System.out.println(Playersin.get(i)+" asked "+Playersin.get(j)+": "+Q". "+Playersin.get(j)+" responded with: "+A+".");
+            for(int i = 0; i<Playersin.size(); i++){
+                for(int j = 0; j<Playersin.size(); j++){
+                    if(i!=j){
+                        String Q = br.readLine();
+                        String A = br.readLine();
+                        if(A.equals("Correct")){
+                            Playersin.remove(i);
+                        }
+                        System.out.println(Playersin.get(j)+" asked "+Playersin.get(i)+": "+Q+"\n"+Playersin.get(i)+" responded with: "+A+".");
+                    }
                 }
             }
-
         }
         System.out.println("Game is still going on...");
         System.out.println(br.readLine()+" won!");
