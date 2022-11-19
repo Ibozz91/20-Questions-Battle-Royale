@@ -50,6 +50,6 @@ public class TQBR_Client{
             }
         }
         System.out.println("Game is still going on...");
-        System.out.println(br.readLine()+"won!");
+        System.out.println(br.readLine()+" won!");
     }
 }
