@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class TQBR_Client{
     public static void main(String Args[]) throws IOException, UnknownHostException, UnsupportedOperationException{
@@ -26,14 +27,15 @@ public class TQBR_Client{
         ps.println(thing);
         ps.flush();
         boolean stillin = true;
+        ArrayList<String> Playersin = new ArrayList<String>();
         while(stillin){
-            for(int i = 0; i < playercount; i++){
-                System.out.println("ask a question for player "+i);
+            for(int i = 0; i < Playersin.size()-1; i++){
+                System.out.println("Ask a question for "+Playersin.get(i));
                 ps.println(Scan.nextLine());
                 ps.flush();
             }
-            for(int i = 0; i < playercount-1; i++){
-                System.out.println(br.readLine());
+            for(int i = 0; i < Playersin.size()-1; i++){
+                System.out.println("From "+Playersin.get(i)+":"+br.readLine());
                 System.out.println("""
                 1. Yes
                 2. No
@@ -48,6 +50,10 @@ public class TQBR_Client{
                 ps.println(Integer.toString(response0));
                 ps.flush();
             }
+            /*
+             Alright Brady
+             Put the last stuff here
+             */
         }
         System.out.println("Game is still going on...");
         System.out.println(br.readLine()+" won!");
