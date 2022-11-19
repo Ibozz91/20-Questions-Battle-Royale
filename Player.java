@@ -7,11 +7,13 @@ public class Player{
     private BufferedReader br;
     private PrintStream ps;
     private boolean stillalive;
+    private boolean lasteliminated;
     public Player(Socket socketaccepted) throws IOException{
         sock = socketaccepted;
         br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
         ps = new PrintStream(sock.getOutputStream());
         stillalive = true;
+        lasteliminated = false;
     }
     public void assignusername(String usn){
         username = usn;
@@ -37,5 +39,11 @@ public class Player{
     }
     public boolean isAlive(){
         return stillalive;
+    }
+    public void setle(boolean toset){
+        lasteliminated = toset;
+    }
+    public boolean isle(){
+        return lasteliminated;
     }
 }

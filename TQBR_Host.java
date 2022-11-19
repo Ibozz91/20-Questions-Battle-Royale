@@ -65,6 +65,7 @@ public class TQBR_Host{
                         }
                     }
                 }
+                players[i].setle(false);
             }
             //Get the answers to the questions
             for(int i = 0; i < players.length; i++){
@@ -100,6 +101,7 @@ public class TQBR_Host{
                         if(players[ii].isAlive() && i!=ii){
                             if(Answers[i][ii].equals("Correct")){
                                 players[i].eliminate();
+                                players[i].setle(true);
                             }
                         }
                     }
@@ -125,13 +127,13 @@ public class TQBR_Host{
                 }
             }
             for(int i = 0; i < players.length; i++){
-                players[i].send(Integer.toString(winner));
+                players[i].send(players[winner].usrn());
             }
         }
         else{
             ArrayList<Integer> winners = new ArrayList<Integer>();
             for(int i = 0; i < players.length; i++){
-                if(players[i].isAlive()){
+                if(players[i].isle()){
                     winners.add(i);
                 }
             }
@@ -139,7 +141,7 @@ public class TQBR_Host{
             int winnerindex = tiebreaker.nextInt(winners.size());
             int winner = winners.get(winnerindex);
             for(int i = 0; i < players.length; i++){
-                players[i].send(Integer.toString(winner));
+                players[i].send(players[winner].usrn());
             }
         }
     }

@@ -46,15 +46,12 @@ public class TQBR_Client{
                 if(response0==4){
                     System.out.println("you have been eliminated.");
                     stillin = false;
-                    spectating = true;
                 }
                 ps.println(Integer.toString(response0));
                 ps.flush();
             }
-            
         }
-        while (spectating = true){
-
-        }
+        System.out.println("Game is still going on...");
+        System.out.println(br.readLine()+" won!");
     }
 }
