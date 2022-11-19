@@ -26,7 +26,6 @@ public class TQBR_Client{
         ps.println(thing);
         ps.flush();
         boolean stillin = true;
-        boolean spectating = false;
         while(stillin){
             for(int i = 0; i < playercount; i++){
                 System.out.println("ask a question for player "+i);
