@@ -35,7 +35,7 @@ public class TQBR_Client{
                 ps.flush();
             }
             for(int i = 0; i < Playersin.size()-1; i++){
-                System.out.println("From "+Playersin.get(i)+":"+br.readLine());
+                System.out.println("From "+Playersin.get(i)+": "+br.readLine());
                 System.out.println("""
                 1. Yes
                 2. No
