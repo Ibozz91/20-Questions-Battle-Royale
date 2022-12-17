@@ -13,7 +13,8 @@ public class TQBR_Client{
         PrintStream ps = new PrintStream(s.getOutputStream());
         int playercount=Integer.parseInt(br.readLine());
         System.out.println("There are "+playercount+" players. Select a username for yourself.");
-        ps.println(Scan.nextLine());
+        String yourusername=Scan.nextLine();
+        ps.println(yourusername);
         ps.flush();
         String[] playernames = new String[playercount];
         for(int i = 0; i < playercount; i++){
@@ -33,13 +34,15 @@ public class TQBR_Client{
             Playersin.add(playernames[i]);
         }
         while(stillin){
-            for(int i = 0; i < Playersin.size()-1; i++){
-                System.out.println("Ask a question for "+Playersin.get(i));
+            ArrayList<String> playersbutyou = Playersin;
+            playersbutyou.remove(yourusername);
+            for(int i = 0; i < playersbutyou.size(); i++){
+                System.out.println("Ask a question for "+playersbutyou.get(i));
                 ps.println(Scan.nextLine());
                 ps.flush();
             }
-            for(int i = 0; i < Playersin.size()-1; i++){
-                System.out.println("From "+Playersin.get(i)+": "+br.readLine());
+            for(int i = 0; i < playersbutyou.size(); i++){
+                System.out.println("From "+playersbutyou.get(i)+": "+br.readLine());
                 System.out.println("""
                 1. Yes
                 2. No
@@ -47,6 +50,12 @@ public class TQBR_Client{
                 4. Correct (the player guessed the thing exactly)
                 """);
                 int response0 = Scan.nextInt();
+                if(response0>4){
+                    response0=4;
+                }
+                else if(response0<1){
+                    response0=1;
+                }
                 if(response0==4){
                     System.out.println("you have been eliminated.");
                     stillin = false;

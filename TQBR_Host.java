@@ -27,8 +27,17 @@ public class TQBR_Host{
         for(Player i: players){
             i.send(Integer.toString(players.length));
         }
+        ArrayList<String> usrns = new ArrayList<String>();
         for(Player i: players){
-            i.assignusername(i.read());
+            String usernamee = i.read();
+            if(usrns.contains(usernamee)){
+                i.assignusername(usernamee);
+                usrns.add(usernamee);
+            }
+            else{
+                System.out.println("Duplicate username detected");
+                System.exit(0);
+            }
         }
         System.out.println("Current players:");
         for(Player i: players){
