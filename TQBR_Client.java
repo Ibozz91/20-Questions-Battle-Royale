@@ -29,6 +29,9 @@ public class TQBR_Client{
         ps.flush();
         boolean stillin = true;
         ArrayList<String> Playersin = new ArrayList<String>();
+        for(int i = 0; i < playernames.length; i++){
+            Playersin.add(playernames[i]);
+        }
         while(stillin){
             for(int i = 0; i < Playersin.size()-1; i++){
                 System.out.println("Ask a question for "+Playersin.get(i));
