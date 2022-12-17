@@ -18,6 +18,7 @@ public class TQBR_Host{
         ServerSocket ss = new ServerSocket(20200);
         System.out.println("20 Questions Battle Royale\nPlease enter the amount of people playing exactly.");
         Player[] players = new Player[Scan.nextInt()];
+        Scan.nextLine();
         System.out.println("Have players join at "+InetAddress.getLocalHost().getHostAddress()+" on the Client Side version.\nIf you want to join too, open a Client Side version in a new window and enter \"localhost\".\nMake sure everybody is on the same wifi.");
         for(int i = 0; i < players.length; i++){
             System.out.println(i+" player(s) have joined.");
@@ -30,13 +31,15 @@ public class TQBR_Host{
         ArrayList<String> usrns = new ArrayList<String>();
         for(Player i: players){
             String usernamee = i.read();
+            System.out.println(usernamee);
+            System.out.println(usrns);
             if(usrns.contains(usernamee)){
-                i.assignusername(usernamee);
-                usrns.add(usernamee);
-            }
-            else{
                 System.out.println("Duplicate username detected");
                 System.exit(0);
+            }
+            else{
+                i.assignusername(usernamee);
+                usrns.add(usernamee);
             }
         }
         System.out.println("Current players:");
@@ -51,9 +54,6 @@ public class TQBR_Host{
         System.out.println("Accepting responses for things from the players.");
         for(Player i: players){
             i.assthing(i.read());
-        }
-        for(int i = 0; i < players.length; i++){
-            players[i].send(Integer.toString(i));
         }
         System.out.println("This is just a test. If you downloaded the newest commit and are seeing this, please go to Ibozz91 himself and tell him that he is a bad programmer for leaking the results and ruining the greatest battle royale game of all time.");
         for(Player i: players){

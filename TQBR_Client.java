@@ -50,6 +50,7 @@ public class TQBR_Client{
                 4. Correct (the player guessed the thing exactly)
                 """);
                 int response0 = Scan.nextInt();
+                Scan.nextLine();
                 if(response0>4){
                     response0=4;
                 }
