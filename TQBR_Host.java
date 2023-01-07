@@ -31,8 +31,6 @@ public class TQBR_Host{
         ArrayList<String> usrns = new ArrayList<String>();
         for(Player i: players){
             String usernamee = i.read();
-            System.out.println(usernamee);
-            System.out.println(usrns);
             if(usrns.contains(usernamee)){
                 System.out.println("Duplicate username detected");
                 System.exit(0);
@@ -54,10 +52,6 @@ public class TQBR_Host{
         System.out.println("Accepting responses for things from the players.");
         for(Player i: players){
             i.assthing(i.read());
-        }
-        System.out.println("This is just a test. If you downloaded the newest commit and are seeing this, please go to Ibozz91 himself and tell him that he is a bad programmer for leaking the results and ruining the greatest battle royale game of all time.");
-        for(Player i: players){
-            System.out.println(i.readthing());
         }
         int playersin=players.length;
         while(playersin>1){
@@ -87,18 +81,6 @@ public class TQBR_Host{
                     }
                 }
             }
-            for (String[] aaa: Questions){
-                for (String bbb: aaa){
-                    System.out.print(bbb);
-                }
-                System.out.println();
-            }
-            for (String[] aaa: Answers){
-                for (String bbb: aaa){
-                    System.out.print(bbb);
-                }
-                System.out.println();
-            }
             //Send Q&A to everybody
             for(int i = 0; i < players.length; i++){
                 if(players[i].isAlive()){
@@ -106,7 +88,6 @@ public class TQBR_Host{
                         if(players[ii].isAlive()){
                             for(int iii = 0; iii < players.length; iii++){
                                 if(players[iii].isAlive() && ii!=iii){
-                                    System.out.println("Sending to player "+i+": the question "+iii+" asked "+ii+" and the answer");
                                     players[i].send(Questions[ii][iii]);
                                     players[i].send(Answers[ii][iii]);
                                 }
