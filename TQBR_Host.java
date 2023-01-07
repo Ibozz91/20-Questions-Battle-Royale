@@ -82,11 +82,22 @@ public class TQBR_Host{
                     for(int ii = 0; ii < players.length; ii++){
                         if(players[ii].isAlive() && i!=ii){
                             String a = players[i].read();
-                            players[ii].send(a);
                             Answers[i][ii]=a;
                         }
                     }
                 }
+            }
+            for (String[] aaa: Questions){
+                for (String bbb: aaa){
+                    System.out.print(bbb);
+                }
+                System.out.println();
+            }
+            for (String[] aaa: Answers){
+                for (String bbb: aaa){
+                    System.out.print(bbb);
+                }
+                System.out.println();
             }
             //Send Q&A to everybody
             for(int i = 0; i < players.length; i++){
@@ -95,8 +106,9 @@ public class TQBR_Host{
                         if(players[ii].isAlive()){
                             for(int iii = 0; iii < players.length; iii++){
                                 if(players[iii].isAlive() && ii!=iii){
-                                    players[ii].send(Questions[ii][iii]);
-                                    players[ii].send(Answers[ii][iii]);
+                                    System.out.println("Sending to player "+i+": the question "+iii+" asked "+ii+" and the answer");
+                                    players[i].send(Questions[ii][iii]);
+                                    players[i].send(Answers[ii][iii]);
                                 }
                             }
                         }

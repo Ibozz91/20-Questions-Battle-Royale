@@ -34,7 +34,10 @@ public class TQBR_Client{
             Playersin.add(playernames[i]);
         }
         while(stillin){
-            ArrayList<String> playersbutyou = Playersin;
+            ArrayList<String> playersbutyou = new ArrayList<String>();
+            for(int thej=0; thej<Playersin.size(); thej++){
+                playersbutyou.add(Playersin.get(thej));
+            }
             playersbutyou.remove(yourusername);
             for(int i = 0; i < playersbutyou.size(); i++){
                 System.out.println("Ask a question for "+playersbutyou.get(i));
@@ -58,22 +61,34 @@ public class TQBR_Client{
                     response0=1;
                 }
                 if(response0==4){
-                    System.out.println("you have been eliminated.");
+                    System.out.println("You have been eliminated. Still, finish all questions.");
                     stillin = false;
                 }
                 ps.println(Answers[response0-1]);
                 ps.flush();
+            }
+            ArrayList<String> newplayersin=new ArrayList<String>();
+            for(int thej=0; thej<Playersin.size(); thej++){
+                newplayersin.add(Playersin.get(thej));
             }
             for(int i = 0; i<Playersin.size(); i++){
                 for(int j = 0; j<Playersin.size(); j++){
                     if(i!=j){
                         String Q = br.readLine();
                         String A = br.readLine();
+                        //Problematic
+                        //not anymore.
                         if(A.equals("Correct")){
-                            Playersin.remove(i);
+                            newplayersin.set(i,"");
                         }
                         System.out.println(Playersin.get(j)+" asked "+Playersin.get(i)+": "+Q+"\n"+Playersin.get(i)+" responded with: "+A+".");
                     }
+                }
+            }
+            Playersin.clear();
+            for(int thej=0; thej<newplayersin.size(); thej++){
+                if(newplayersin.get(thej)!=""){
+                    Playersin.add(newplayersin.get(thej));
                 }
             }
         }
