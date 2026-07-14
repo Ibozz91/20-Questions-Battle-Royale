@@ -55,7 +55,7 @@ public class TQBR_Client{
                 String response0st;
                 do{
                     response0st = Scan.nextLine();
-                }while(response0st != "1" && response0st != "2" && response0st != "3" && response0st != "4");
+                }while(!(response0st.equals("1") || response0st.equals("2") || response0st.equals("3") || response0st.equals("4")));
                 int response0 = Integer.parseInt(response0st);
                 if(response0==4){
                     System.out.println("You have been eliminated. Still, finish all questions.");
