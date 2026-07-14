@@ -146,5 +146,7 @@ public class TQBR_Host{
                 players[i].send(players[winner].usrn());
             }
         }
+        Scan.close();
+        ss.close();
     }
 }
