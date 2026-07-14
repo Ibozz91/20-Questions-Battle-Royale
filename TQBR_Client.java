@@ -52,14 +52,11 @@ public class TQBR_Client{
                 3. Sometimes
                 4. Correct (the player guessed the thing exactly)
                 """);
-                int response0 = Scan.nextInt();
-                Scan.nextLine();
-                if(response0>4){
-                    response0=4;
-                }
-                else if(response0<1){
-                    response0=1;
-                }
+                String response0st;
+                do{
+                    response0st = Scan.nextLine();
+                }while(response0st != "1" && response0st != "2" && response0st != "3" && response0st != "4");
+                int response0 = Integer.parseInt(response0st);
                 if(response0==4){
                     System.out.println("You have been eliminated. Still, finish all questions.");
                     stillin = false;
@@ -76,8 +73,6 @@ public class TQBR_Client{
                     if(i!=j){
                         String Q = br.readLine();
                         String A = br.readLine();
-                        //Problematic
-                        //not anymore.
                         if(A.equals("Correct")){
                             newplayersin.set(i,"");
                         }
