@@ -31,8 +31,8 @@ public class TQBR_Host{
         ArrayList<String> usrns = new ArrayList<String>();
         for(Player i: players){
             String usernamee = i.read();
-            if(usrns.contains(usernamee)){
-                System.out.println("Duplicate username detected");
+            if(usrns.contains(usernamee) || usernamee.equals("")){
+                System.out.println("Duplicate or blank username detected");
                 System.exit(0);
             }
             else{
@@ -115,6 +115,7 @@ public class TQBR_Host{
                     playersin++;
                 }
             }
+            //System.out.println("After this round, there are "+playersin+" players still in.");
         }
         for(int i = 0; i < players.length; i++){
             for(int ii = 0; ii < players.length; ii++){
@@ -124,10 +125,13 @@ public class TQBR_Host{
         if(playersin==1){
             int winner = -1;
             for(int i = 0; i < players.length; i++){
+                //System.out.println("Is "+players[i].usrn()+" alive?");
                 if(players[i].isAlive()){
                     winner = i;
+                    //System.out.println("Yes");
                 }
             }
+            //System.out.println("Sending "+players[winner].usrn());
             for(int i = 0; i < players.length; i++){
                 players[i].send(players[winner].usrn());
             }

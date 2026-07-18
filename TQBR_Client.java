@@ -2,9 +2,11 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TQBR_Client{
     public static void main(String Args[]) throws IOException, UnknownHostException, UnsupportedOperationException{
+        HashMap<String, ArrayList<Question>> questionsAsked = new HashMap<String, ArrayList<Question>>();
         String[] Answers = {"Yes", "No", "Sometimes", "Correct"};
         Scanner Scan = new Scanner(System.in);
         System.out.println("20 Questions Battle Royale\nPlease enter the IP address of the game you want to join.");
@@ -19,6 +21,7 @@ public class TQBR_Client{
         String[] playernames = new String[playercount];
         for(int i = 0; i < playercount; i++){
             playernames[i]=br.readLine();
+            questionsAsked.put(playernames[i], new ArrayList<Question>());
         }
         System.out.println("All player usernames:");
         for(String i: playernames){
@@ -40,6 +43,10 @@ public class TQBR_Client{
             }
             playersbutyou.remove(yourusername);
             for(int i = 0; i < playersbutyou.size(); i++){
+                System.out.println("Questions asked so far to "+playersbutyou.get(i)+":");
+                for(int j = 0; j < questionsAsked.get(playersbutyou.get(i)).size(); j++){
+                    System.out.println((j+1)+". "+questionsAsked.get(playersbutyou.get(i)).get(j));
+                }
                 System.out.println("Ask a question for "+playersbutyou.get(i));
                 ps.println(Scan.nextLine());
                 ps.flush();
@@ -68,14 +75,26 @@ public class TQBR_Client{
                 newplayersin.add(Playersin.get(thej));
             }
             for(int i = 0; i<Playersin.size(); i++){
+                boolean eliminatedMessageDisplayed = false;
                 for(int j = 0; j<Playersin.size(); j++){
                     if(i!=j){
                         String Q = br.readLine();
                         String A = br.readLine();
                         if(A.equals("Correct")){
+                            if(!Playersin.get(i).equals(yourusername)){
+                                if(eliminatedMessageDisplayed){
+                                    System.out.println("They also answered \"Correct\" to the following question by "+Playersin.get(j)+": "+Q);
+                                }
+                                else{
+                                    System.out.println(Playersin.get(i) + " has been eliminated!");
+                                    System.out.println("They answered \"Correct\" to the following question by "+Playersin.get(j)+": "+Q);
+                                    eliminatedMessageDisplayed = true;
+                                }
+                            }
                             newplayersin.set(i,"");
                         }
-                        System.out.println(Playersin.get(j)+" asked "+Playersin.get(i)+": "+Q+"\n"+Playersin.get(i)+" responded with: "+A+".");
+                        //System.out.println(Playersin.get(j)+" asked "+Playersin.get(i)+": "+Q+"\n"+Playersin.get(i)+" responded with: "+A+".");
+                        questionsAsked.get(Playersin.get(i)).add(new Question(Playersin.get(j), Q, A));
                     }
                 }
             }
@@ -85,9 +104,31 @@ public class TQBR_Client{
                     Playersin.add(newplayersin.get(thej));
                 }
             }
+            if(Playersin.size() <= 1){
+                stillin = false;
+            }
+            else{
+                System.out.println(Playersin.size()+" players remain.");
+            }
         }
         System.out.println("Game is still going on...");
-        System.out.println(br.readLine()+" won!");
+        String[] things = new String[playercount];
+        for(int i = 0; i < playercount; i++){
+            things[i] = br.readLine();
+        }
+        System.out.println("Game has finished!");
+        for(int i = 0; i < playercount; i++){
+            if(playernames[i] != yourusername){
+                System.out.println(playernames[i]+"'s thing: "+things[i]);
+            }
+        }
+        String winnerName = br.readLine();
+        if(winnerName.equals(yourusername)){
+            System.out.println("You won!");
+        }
+        else{
+            System.out.println(winnerName+" won!");
+        }
         s.close();
         Scan.close();
     }
