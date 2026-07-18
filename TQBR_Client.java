@@ -50,8 +50,7 @@ public class TQBR_Client{
                 1. Yes
                 2. No
                 3. Sometimes
-                4. Correct (the player guessed the thing exactly)
-                """);
+                4. Correct (the player guessed the thing exactly)""");
                 String response0st;
                 do{
                     response0st = Scan.nextLine();
