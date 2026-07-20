@@ -5,17 +5,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TQBR_Client{
+    static final String GAME_VERSION = "1.0";
     public static void main(String Args[]) throws IOException, UnknownHostException, UnsupportedOperationException{
         HashMap<String, ArrayList<Question>> questionsAsked = new HashMap<String, ArrayList<Question>>();
         String[] Answers = {"Yes", "No", "Sometimes", "Correct"};
         Scanner Scan = new Scanner(System.in);
-        System.out.println("20 Questions Battle Royale\nPlease enter the IP address of the game you want to join.");
+        System.out.println("20 Questions Battle Royale\nVersion "+GAME_VERSION+"\nPlease enter the IP address of the game you want to join.");
         Socket s = new Socket(Scan.nextLine(), 20200);
         BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
         PrintStream ps = new PrintStream(s.getOutputStream());
         int playercount=Integer.parseInt(br.readLine());
         System.out.println("There are "+playercount+" players. Select a username for yourself.");
         String yourusername=Scan.nextLine();
+        ps.println(GAME_VERSION);
         ps.println(yourusername);
         ps.flush();
         String[] playernames = new String[playercount];

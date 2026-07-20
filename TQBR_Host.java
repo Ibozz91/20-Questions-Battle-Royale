@@ -13,10 +13,11 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 public class TQBR_Host{
+    static final String GAME_VERSION = "1.0";
     public static void main(String Args[]) throws IOException, UnknownHostException{
         Scanner Scan = new Scanner(System.in);
         ServerSocket ss = new ServerSocket(20200);
-        System.out.println("20 Questions Battle Royale\nPlease enter the amount of people playing exactly.");
+        System.out.println("20 Questions Battle Royale\nVersion "+GAME_VERSION+"\nPlease enter the amount of people playing exactly.");
         Player[] players = new Player[Scan.nextInt()];
         Scan.nextLine();
         System.out.println("Have players join at "+InetAddress.getLocalHost().getHostAddress()+" on the Client Side version.\nIf you want to join too, open a Client Side version in a new window and enter \"localhost\".\nMake sure everybody is on the same wifi.");
@@ -30,9 +31,14 @@ public class TQBR_Host{
         }
         ArrayList<String> usrns = new ArrayList<String>();
         for(Player i: players){
+            String version = i.read();
             String usernamee = i.read();
             if(usrns.contains(usernamee) || usernamee.equals("")){
-                System.out.println("Duplicate or blank username detected");
+                System.out.println("Duplicate or blank username detected: "+usernamee);
+                System.exit(0);
+            }
+            else if(!GAME_VERSION.equals(version)){
+                System.out.println("Version mismatch: "+usernamee+" is playing on version "+version);
                 System.exit(0);
             }
             else{
@@ -100,11 +106,9 @@ public class TQBR_Host{
             for(int i = 0; i < players.length; i++){
                 if(players[i].isAlive()){
                     for(int ii = 0; ii < players.length; ii++){
-                        if(players[ii].isAlive() && i!=ii){
-                            if(Answers[i][ii].equals("Correct")){
-                                players[i].eliminate();
-                                players[i].setle(true);
-                            }
+                        if(Answers[i][ii] != null && Answers[i][ii].equals("Correct")){
+                            players[i].eliminate();
+                            players[i].setle(true);
                         }
                     }
                 }
@@ -115,7 +119,7 @@ public class TQBR_Host{
                     playersin++;
                 }
             }
-            //System.out.println("After this round, there are "+playersin+" players still in.");
+            System.out.println("After this round, there are "+playersin+" players still in.");
         }
         for(int i = 0; i < players.length; i++){
             for(int ii = 0; ii < players.length; ii++){
